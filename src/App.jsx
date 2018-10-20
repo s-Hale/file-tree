@@ -36,7 +36,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="wrapper-app">
       <Buttons 
          data={this.state.data}
          sortByRatingDesc={this.sortByRatingDesc}

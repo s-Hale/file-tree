@@ -28,7 +28,7 @@ describe('App', () => {
   it('renders multiple Checkbox components', () => {
     const wrapper = mount(<App />);
     expect(wrapper.find('Checkbox').exists()).toEqual(true);
-    expect(wrapper.find('Checkbox')).toHaveLength(3);
+    expect(wrapper.find('Checkbox')).toHaveLength(8);
   });
 });
 

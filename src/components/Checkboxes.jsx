@@ -7,14 +7,14 @@ import Checkbox from '../components/Checkbox.jsx';
 class Checkboxes extends React.Component {
 
   render() {
-    let options = ["gym", "pool", "car park"];
-    let renderCheckboxes = options.map((each, i) => {
+    let allFacilities = ["gym", "pool", "car park", "wifi", "pets", "bar", "golf", "restaurant"];
+    let renderCheckboxes = allFacilities.map((facility, i) => {
       return (
         <div className="checkbox" key={i}>
           <Checkbox
-            value={each}
+            value={facility}
           />
-          <label className="check-label">{each}</label>
+          <label className="check-label">{facility}</label>
         </div>
       );
     });
