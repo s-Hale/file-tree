@@ -21,3 +21,31 @@ describe('App', () => {
     expect(wrapper.find('Cards').exists()).toEqual(true);
   });
 });
+
+describe('Buttons', () => {
+  it('renders three buttons', () => {
+    const wrapper = shallow(<Buttons />);
+    expect(wrapper.find('button')).toHaveLength(3);
+  })
+})
+
+describe('Cards', () => {
+  let props;
+  beforeEach(() => {
+    props = {
+     'data':[{
+        name: "testdata",
+        starRating: 5,
+        facilities: ["test", "test"]},
+        {
+        name: "testdata",
+        starRating: 5,
+        facilities: ["test", "test"]
+      }]
+    };
+  });
+  it('renders a card for each result in state', () => {
+    const wrapper = shallow(<Cards {...props} />);
+    expect(wrapper.find('.card')).toHaveLength(2);
+  })
+});
