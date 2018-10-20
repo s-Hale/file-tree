@@ -4,6 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import App from '../../App.jsx';
 import Buttons from '../Buttons.jsx';
 import Cards from '../Cards.jsx';
+// import Checkboxes from '../Checkboxes.jsx';
 
 Enzyme.configure({ 'adapter': new Adapter() });
 
@@ -20,6 +21,15 @@ describe('App', () => {
     const wrapper = mount(<App />);
     expect(wrapper.find('Cards').exists()).toEqual(true);
   });
+  it('renders a Checkboxes component', () => {
+    const wrapper = mount(<App />);
+    expect(wrapper.find('Checkboxes').exists()).toEqual(true);
+  });
+  // it('renders multiple Checkbox components', () => {
+  //   const wrapper = mount(<App />);
+  //   expect(wrapper.find('Checkbox').exists()).toEqual(true);
+  //   expect(wrapper.find('Checkbox')).toHaveLength(8);
+  // });
 });
 
 describe('Buttons', () => {

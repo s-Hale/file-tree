@@ -1,6 +1,6 @@
 
 import React from 'react';
-
+import Checkboxes from '../components/Checkboxes.jsx';
 
 class Buttons extends React.Component {
   constructor(props) {
@@ -25,6 +25,7 @@ class Buttons extends React.Component {
           rating asc
         </button>
       </div>
+      <Checkboxes />
       <div className="buttons-row">
         <button className="reset-button" onClick={this.handleClick}>
           reset
