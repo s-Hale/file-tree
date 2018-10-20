@@ -25,11 +25,11 @@ describe('App', () => {
     const wrapper = mount(<App />);
     expect(wrapper.find('Checkboxes').exists()).toEqual(true);
   });
-  // it('renders multiple Checkbox components', () => {
-  //   const wrapper = mount(<App />);
-  //   expect(wrapper.find('Checkbox').exists()).toEqual(true);
-  //   expect(wrapper.find('Checkbox')).toHaveLength(8);
-  // });
+  it('renders multiple Checkbox components', () => {
+    const wrapper = mount(<App />);
+    expect(wrapper.find('Checkbox').exists()).toEqual(true);
+    expect(wrapper.find('Checkbox')).toHaveLength(3);
+  });
 });
 
 describe('Buttons', () => {

@@ -1,6 +1,7 @@
 
 
 import React from 'react';
+import Checkbox from '../components/Checkbox.jsx';
 
 
 class Checkboxes extends React.Component {
@@ -10,9 +11,9 @@ class Checkboxes extends React.Component {
     let renderCheckboxes = options.map((each, i) => {
       return (
         <div className="checkbox" key={i}>
-          {/* <CheckBox
+          <Checkbox
             value={each}
-          /> */}
+          />
           <label className="check-label">{each}</label>
         </div>
       );
