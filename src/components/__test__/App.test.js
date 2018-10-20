@@ -27,6 +27,36 @@ describe('Buttons', () => {
     const wrapper = shallow(<Buttons />);
     expect(wrapper.find('button')).toHaveLength(3);
   })
+  it('GIVEN Asc button is pressed, correct onClick is called', () => {
+    const mockEvent = {
+      target: { innerText : 'rating asc' }
+    }
+    const sortAsc = jest.fn();
+    const sortDesc = jest.fn();
+    const wrapper = shallow(<Buttons 
+      sortByRatingDesc={sortDesc}
+      sortByRatingAsc={sortAsc}
+      />);
+    wrapper.find('.rating-button-asc').simulate('click', mockEvent);
+    expect(sortAsc).toHaveBeenCalled();
+    expect(sortDesc).not.toHaveBeenCalled();
+    expect(sortAsc.mock.calls.length).toEqual(1);
+  })
+    it('GIVEN Desc button is pressed, correct onClick is called', () => {
+    const mockEvent = {
+      target: { innerText : 'rating desc' }
+    }
+    const sortAsc = jest.fn();
+    const sortDesc = jest.fn();
+    const wrapper = shallow(<Buttons 
+      sortByRatingDesc={sortDesc}
+      sortByRatingAsc={sortAsc}
+      />);
+    wrapper.find('.rating-button-desc').simulate('click', mockEvent);
+    expect(sortDesc).toHaveBeenCalled();
+    expect(sortAsc).not.toHaveBeenCalled();
+    expect(sortDesc.mock.calls.length).toEqual(1);
+  })
 })
 
 describe('Cards', () => {
@@ -47,5 +77,11 @@ describe('Cards', () => {
   it('renders a card for each result in state', () => {
     const wrapper = shallow(<Cards {...props} />);
     expect(wrapper.find('.card')).toHaveLength(2);
+  })
+  it('each card contains correct properties', () => {
+    const wrapper = shallow(<Cards {...props} />);
+    expect(wrapper.find('.hotel-name')).toHaveLength(2);
+    expect(wrapper.find('.hotel-rating')).toHaveLength(2);
+    expect(wrapper.find('.facilities-wrapper')).toHaveLength(2);
   })
 });

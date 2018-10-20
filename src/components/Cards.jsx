@@ -9,11 +9,11 @@ class Cards extends React.Component {
     return (
       <div className="cards-wrapper">
         {data.map((data, i) => (
-          <div className="card">
+          <div className="card" key={i}>
             <p className="hotel-name">{data.name}</p>
             <p className="hotel-rating">{data.starRating}</p>
             <div className="facilities-wrapper">
-              {data.facilities.map(each => <p className="facility-indiv">{each}</p>)}
+              {data.facilities.map((each, i) => <p className="facility-indiv" key={i}>{each}</p>)}
             </div>
           </div>
         ))}
