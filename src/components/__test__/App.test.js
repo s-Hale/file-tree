@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import App from '../../App.jsx';
 import Buttons from '../Buttons.jsx';
 import Cards from '../Cards.jsx';
-// import Checkboxes from '../Checkboxes.jsx';
+import Checkboxes from '../Checkboxes.jsx';
 
 Enzyme.configure({ 'adapter': new Adapter() });
 
@@ -43,7 +43,7 @@ describe('Buttons', () => {
     }
     const sortAsc = jest.fn();
     const sortDesc = jest.fn();
-    const wrapper = shallow(<Buttons 
+    const wrapper = shallow(<Buttons
       sortByRatingDesc={sortDesc}
       sortByRatingAsc={sortAsc}
       />);
@@ -58,7 +58,7 @@ describe('Buttons', () => {
     }
     const sortAsc = jest.fn();
     const sortDesc = jest.fn();
-    const wrapper = shallow(<Buttons 
+    const wrapper = shallow(<Buttons
       sortByRatingDesc={sortDesc}
       sortByRatingAsc={sortAsc}
       />);
@@ -95,3 +95,19 @@ describe('Cards', () => {
     expect(wrapper.find('.facilities-wrapper')).toHaveLength(2);
   })
 });
+
+describe('Checkboxes', () => {
+  let props;
+  beforeEach(() => {
+    props = {
+     data: ["test", "test"]
+    };
+  });
+  it('renders a checkbox for each desired facility', () => {
+    const wrapper = shallow(<Checkboxes
+      selectedFacilities={props.data}
+    />);
+    expect(wrapper.find('.checkbox')).toHaveLength(8);
+  })
+});
+

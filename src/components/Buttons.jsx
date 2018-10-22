@@ -5,13 +5,19 @@ import Checkboxes from '../components/Checkboxes.jsx';
 class Buttons extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { selectedFacilities: [] };
     this.handleClick = this.handleClick.bind(this);
+    this.handleFilter = this.handleFilter.bind(this);
   }
 
   handleClick(event) {
     if (event.target.innerText === "rating desc")
       this.props.sortByRatingDesc(event);
     else this.props.sortByRatingAsc(event);
+  }
+
+  handleFilter(event) {
+    this.props.filterByFacility(event);
   }
 
   render() {
@@ -25,7 +31,9 @@ class Buttons extends React.Component {
           rating asc
         </button>
       </div>
-      <Checkboxes />
+      <Checkboxes
+          selectedFacilities={this.state.selectedFacilities}
+      />
       <div className="buttons-row">
         <button className="reset-button" onClick={this.handleClick}>
           reset

@@ -9,6 +9,7 @@ class App extends Component {
     super(props);
     this.sortByRatingDesc = this.sortByRatingDesc.bind(this);
     this.sortByRatingAsc = this.sortByRatingAsc.bind(this);
+    this.filterByFacility = this.filterByFacility.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.originalData = hotelData;
     this.state = { data: this.originalData };
@@ -34,14 +35,26 @@ class App extends Component {
     });
   };
 
+  filterByFacility = selectedFacilities => {
+    let result = this.originalData;
+    if (selectedFacilities.length)
+      result = this.originalData.filter(hotel =>
+        selectedFacilities.every(facility => hotel.facilities.includes(facility))
+      );
+    this.setState({
+      data: result
+    });
+  };
+
   render() {
     return (
       <div className="wrapper-app">
-      <Buttons 
+      <Buttons
          data={this.state.data}
          sortByRatingDesc={this.sortByRatingDesc}
          sortByRatingAsc={this.sortByRatingAsc}
          handleReset={this.handleReset}
+         filterByFacility={this.filterByFacility}
          />
       <Cards data={this.state.data}/>
       </div>
