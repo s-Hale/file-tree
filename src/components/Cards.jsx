@@ -2,10 +2,8 @@
 
 import React from 'react';
 
-class Cards extends React.Component {
-
-  render() {
-    const { data } = this.props;
+const Cards = (props) => {
+  const { data } = props;
     return (
       <div className="cards-wrapper">
         {data.map((data, i) => (
@@ -20,6 +18,5 @@ class Cards extends React.Component {
         ))}
       </div>
     );
-  }
 }
 export default Cards;

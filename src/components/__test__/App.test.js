@@ -100,7 +100,7 @@ describe('Checkboxes', () => {
   let props;
   beforeEach(() => {
     props = {
-     data: ["test", "test"]
+     data: []
     };
   });
   it('renders a checkbox for each desired facility', () => {
@@ -111,3 +111,56 @@ describe('Checkboxes', () => {
   })
 });
 
+// describe('Filtering', () => {
+//   let props;
+//   beforeEach(() => {
+//     props = {
+//       add: jest.fn(),
+//       remove: jest.fn(),
+//       data: []
+//     };
+//   });
+//   it('Selecting an empty box adds its value to selectedArray, re-rendering user results', () => {
+//     const checked = jest.fn();
+//     const onSelect = jest.fn();
+//     const wrapper = mount(<Buttons
+//       checked={checked}
+//       handleSelection={onSelect}
+//       addSelectedFacility={props.add}
+//       removeSelectedFacility={props.remove}
+//       selectedFacilities={props.data}
+//     />);
+//     wrapper.find('input[type="checkbox"]').find('#gym').simulate('change', {target: { checked:true }});
+//   })
+//  it('Selecting a checked box removes its value from selectedArray, re-rendering user results', () => {
+
+//   })npm
+// });
+
+// describe('Reset', () => {
+//   let props;
+//   beforeEach(() => {
+//     props = {
+//       add: jest.fn(),
+//       remove: jest.fn(),
+//       reset: jest.fn(),
+//       filter: jest.fn(),
+//       data: ["test"]
+//     };
+//   });
+//   it('data is reset to original data', () => {
+//     const checked = jest.fn();
+//     const onSelect = jest.fn();
+//     const wrapper = mount(<Buttons
+//       checked={checked}
+//       handleSelection={onSelect}
+//       addSelectedFacility={props.add}
+//       removeSelectedFacility={props.remove}
+//       selectedFacilities={props.data}
+//       filterByFacility={props.filter}
+//       handleReset={props.reset}
+//     />);
+//     wrapper.find('.reset-button').simulate('click');
+//     expect(wrapper.find('.checkbox').prop('checked')).toBe(false)
+//   })
+// });

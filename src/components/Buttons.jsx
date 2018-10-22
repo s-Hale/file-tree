@@ -8,12 +8,37 @@ class Buttons extends React.Component {
     this.state = { selectedFacilities: [] };
     this.handleClick = this.handleClick.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
+    this.addSelectedFacility = this.addSelectedFacility.bind(this);
+    this.removeSelectedFacility = this.removeSelectedFacility.bind(this);
+    this.clearSelectedFacilities = this.clearSelectedFacilities.bind(this);
   }
+
+   addSelectedFacility = facility => {
+    let selectedFacilities = [...this.state.selectedFacilities, facility];
+    this.setState({ selectedFacilities });
+    this.props.filterByFacility(selectedFacilities);
+  };
+
+  removeSelectedFacility = facility => {
+    let selectedFacilities = [...this.state.selectedFacilities];
+    let index = selectedFacilities.indexOf(facility);
+    selectedFacilities.splice(index, 1);
+    this.setState({ selectedFacilities });
+    this.props.filterByFacility(selectedFacilities);
+  };
+
+  clearSelectedFacilities = () => {
+    this.setState({ selectedFacilities: [] });
+    this.props.filterByFacility([]);
+    this.props.handleReset();
+  };
 
   handleClick(event) {
     if (event.target.innerText === "rating desc")
       this.props.sortByRatingDesc(event);
-    else this.props.sortByRatingAsc(event);
+    else if (event.target.innerText === "rating asc")
+      this.props.sortByRatingAsc(event);
+    else this.clearSelectedFacilities();
   }
 
   handleFilter(event) {
@@ -32,6 +57,8 @@ class Buttons extends React.Component {
         </button>
       </div>
       <Checkboxes
+          addSelectedFacility={this.addSelectedFacility}
+          removeSelectedFacility={this.removeSelectedFacility}
           selectedFacilities={this.state.selectedFacilities}
       />
       <div className="buttons-row">
