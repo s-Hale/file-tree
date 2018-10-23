@@ -156,20 +156,19 @@ input[type="checkbox"] {
   }
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 560px) {
 
   .wrapper-app {
-    width: 80%;
-    font-size: 0.9em;
+    font-size: 1.2em;
   }
 
  .checkboxes-wrapper {
-    height: 12em;
-    padding: 5px;
+    height: 9em;
+    padding-left: 1.5em;
   }
 
   .hotel-img {
-    width: 120px;
+    width: 180px;
   }
 
   .star {
@@ -180,6 +179,7 @@ input[type="checkbox"] {
     display: flex;
     flex-direction: column;
     padding-top: 10px;
+    margin-top: 23px;
  }
 
   .card {
