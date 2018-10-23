@@ -48,7 +48,7 @@
 .rating-button-asc {
   background-color: #d9ede6;
 }
-  
+
 .rating-button-desc {
   background-color: #dde8ec;
 }
@@ -102,6 +102,12 @@ button:focus {
   margin: 15px 0px 15px 0px;
 }
 
+.star {
+  margin: 0px 2px;
+  opacity: 0.9;
+}
+
+
 .facilities-wrapper {
   border-top: 1px solid #BBC5CF;
   padding-top: 10px;
@@ -128,6 +134,10 @@ button:focus {
   margin: 5px 0px 5px 0px;
   display: flex;
   align-items: center;
+}
+
+.check-label {
+  margin-left: 5px;
 }
 
 input[type="checkbox"] {

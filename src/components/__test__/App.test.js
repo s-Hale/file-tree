@@ -5,7 +5,7 @@ import App from '../../App.jsx';
 import Buttons from '../Buttons.jsx';
 import Cards from '../Cards.jsx';
 import Checkboxes from '../Checkboxes.jsx';
-import { existsSync } from 'fs';
+import Stars from '../Stars.jsx';
 
 Enzyme.configure({ 'adapter': new Adapter() });
 
@@ -80,7 +80,7 @@ describe('Cards', () => {
         facilities: ["test", "test"]},
         {
         name: "testdata",
-        starRating: 5,
+        starRating: 3,
         facilities: ["test", "test"]
       }]
     };
@@ -88,13 +88,16 @@ describe('Cards', () => {
   it('renders a card for each result in state', () => {
     const wrapper = shallow(<Cards {...props} />);
     expect(wrapper.find('.card')).toHaveLength(2);
-  })
+  });
   it('each card contains correct properties', () => {
     const wrapper = shallow(<Cards {...props} />);
     expect(wrapper.find('.hotel-name')).toHaveLength(2);
-    expect(wrapper.find('.hotel-rating')).toHaveLength(2);
     expect(wrapper.find('.facilities-wrapper')).toHaveLength(2);
-  })
+  });
+  it('renders a star component from the rating number prop', () => {
+    const wrapper = mount(<Cards {...props} />);
+    expect(wrapper.find('.star')).toHaveLength(8);
+  });
 });
 
 describe('Checkboxes', () => {
@@ -116,8 +119,7 @@ describe('Reset', () => {
   let props;
   beforeEach(() => {
     props = {
-      filter: jest.fn(),
-      reset: jest.fn()
+      filter: jest.fn()
     };
   });
   it('calls reset function', () => {
@@ -131,13 +133,16 @@ describe('Reset', () => {
     />);
     wrapper.find('.reset-button').simulate('click', mockEvent);
     expect(reset).toHaveBeenCalled();
-  })
+  });
 });
+
+// check reset updates then resets state
 
 // describe.only('Filtering', () => {
 //   let props;
 //   beforeEach(() => {
 //     props = {
+//       filter: jest.fn(),
 //       data:[]
 //     };
 //   });
@@ -145,18 +150,19 @@ describe('Reset', () => {
 //     const mockEvent = {
 //     target: { checked: true }
 //   }
-//     const onChange = jest.fn();
+//     const filter = jest.fn();
 //     const wrapper = mount(<Checkboxes
 //       selectedFacilities={props.data}
-//       handleSelection={onChange}
+//       handleSelection={filter}
 //     />);
-//     const checkbox = wrapper.find('.checkbox').at(0);
-//     expect(checkbox).toHaveLength(1);
-//     checkbox.simulate('change', mockEvent);
-//     expect(onChange).toHaveBeenCalled();
-//     // expect(onChange.mock.calls.length).toEqual(1);
+//     wrapper.find('.checkbox').at(0).simulate('click', mockEvent);
+//     expect(filter).toHaveBeenCalled();
 //   })
 // });
+
+// check filter shows only selected
+
+// check does not show unselected
 
 
 
