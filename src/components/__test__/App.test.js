@@ -5,6 +5,7 @@ import App from '../../App.jsx';
 import Buttons from '../Buttons.jsx';
 import Cards from '../Cards.jsx';
 import Checkboxes from '../Checkboxes.jsx';
+import { existsSync } from 'fs';
 
 Enzyme.configure({ 'adapter': new Adapter() });
 
@@ -111,56 +112,51 @@ describe('Checkboxes', () => {
   })
 });
 
-// describe('Filtering', () => {
+describe('Reset', () => {
+  let props;
+  beforeEach(() => {
+    props = {
+      filter: jest.fn(),
+      reset: jest.fn()
+    };
+  });
+  it('calls reset function', () => {
+    const mockEvent = {
+      target: { innerText: 'reset' }
+    }
+    const reset = jest.fn();
+    const wrapper = shallow(<Buttons
+      filterByFacility={props.filter}
+      handleReset={reset}
+    />);
+    wrapper.find('.reset-button').simulate('click', mockEvent);
+    expect(reset).toHaveBeenCalled();
+  })
+});
+
+// describe.only('Filtering', () => {
 //   let props;
 //   beforeEach(() => {
 //     props = {
-//       add: jest.fn(),
-//       remove: jest.fn(),
-//       data: []
+//       data:[]
 //     };
 //   });
-//   it('Selecting an empty box adds its value to selectedArray, re-rendering user results', () => {
-//     const checked = jest.fn();
-//     const onSelect = jest.fn();
-//     const wrapper = mount(<Buttons
-//       checked={checked}
-//       handleSelection={onSelect}
-//       addSelectedFacility={props.add}
-//       removeSelectedFacility={props.remove}
+//   it('selecting a box should call onSelect function', () => {
+//     const mockEvent = {
+//     target: { checked: true }
+//   }
+//     const onChange = jest.fn();
+//     const wrapper = mount(<Checkboxes
 //       selectedFacilities={props.data}
+//       handleSelection={onChange}
 //     />);
-//     wrapper.find('input[type="checkbox"]').find('#gym').simulate('change', {target: { checked:true }});
-//   })
-//  it('Selecting a checked box removes its value from selectedArray, re-rendering user results', () => {
-
-//   })npm
-// });
-
-// describe('Reset', () => {
-//   let props;
-//   beforeEach(() => {
-//     props = {
-//       add: jest.fn(),
-//       remove: jest.fn(),
-//       reset: jest.fn(),
-//       filter: jest.fn(),
-//       data: ["test"]
-//     };
-//   });
-//   it('data is reset to original data', () => {
-//     const checked = jest.fn();
-//     const onSelect = jest.fn();
-//     const wrapper = mount(<Buttons
-//       checked={checked}
-//       handleSelection={onSelect}
-//       addSelectedFacility={props.add}
-//       removeSelectedFacility={props.remove}
-//       selectedFacilities={props.data}
-//       filterByFacility={props.filter}
-//       handleReset={props.reset}
-//     />);
-//     wrapper.find('.reset-button').simulate('click');
-//     expect(wrapper.find('.checkbox').prop('checked')).toBe(false)
+//     const checkbox = wrapper.find('.checkbox').at(0);
+//     expect(checkbox).toHaveLength(1);
+//     checkbox.simulate('change', mockEvent);
+//     expect(onChange).toHaveBeenCalled();
+//     // expect(onChange.mock.calls.length).toEqual(1);
 //   })
 // });
+
+
+
