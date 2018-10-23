@@ -85,15 +85,14 @@ button:focus {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid #BBC5CF;
   border-radius: 8px;
   width: 20em;
   box-shadow: 3px 3px 8px 1px #a1b3c4;
   margin: 40px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .hotel-name {
@@ -109,11 +108,11 @@ button:focus {
 
 
 .facilities-wrapper {
-  border-top: 1px solid #BBC5CF;
-  padding-top: 10px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  border-top: 1px solid #BBC5CF;
+  padding-top: 10px;
   margin: 35px 0px 15px 0px;
   width: 100%;
   font-size: 0.8em;
@@ -131,9 +130,9 @@ button:focus {
 }
 
 .checkbox {
-  margin: 5px 0px 5px 0px;
   display: flex;
   align-items: center;
+  margin: 5px 0px 5px 0px;
 }
 
 .check-label {
@@ -149,4 +148,43 @@ input[type="checkbox"] {
   width: 250px;
   border-radius: 8px;
 }
+
+@media only screen and (max-width: 650px) {
+  .checkboxes-wrapper {
+    height: 8em;
+    padding-left: 4em;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+
+  .wrapper-app {
+    width: 80%;
+    font-size: 0.9em;
+  }
+
+ .checkboxes-wrapper {
+    height: 12em;
+    padding: 5px;
+  }
+
+  .hotel-img {
+    width: 120px;
+  }
+
+  .star {
+    width: 12px;
+  }
+
+  .facilities-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+ }
+
+  .card {
+    margin: 15px;
+ }
+}
+
 
