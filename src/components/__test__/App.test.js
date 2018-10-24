@@ -122,7 +122,7 @@ describe('Reset', () => {
       filter: jest.fn()
     };
   });
-  it('calls reset function', () => {
+  it('GIVEN reset is clicked, calls reset function', () => {
     const mockEvent = {
       target: { innerText: 'reset' }
     }
@@ -138,7 +138,7 @@ describe('Reset', () => {
 
 // check reset updates then resets state
 
-// describe.only('Filtering', () => {
+// describe('Filtering', () => {
 //   let props;
 //   beforeEach(() => {
 //     props = {
