@@ -79,4 +79,9 @@ describe("FilterBar", () => {
     wrapper.find(".date-button").simulate("click");
     expect(sortByDate).toHaveBeenCalled();
   });
+
+  it("sortByName sorts files and folders based on Name", () => {});
+  it("sortByDate sorts files based on Date and puts folders on the bottom", () => {});
+  it("sortByType groups the folders together", () => {});
+  it("handleTypeSearch shows results based on user input", () => {});
 });
