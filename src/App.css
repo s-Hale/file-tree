@@ -19,3 +19,17 @@
   margin: 0.6rem;
   padding: 0.6rem;
 }
+
+.view-button {
+  margin-left: 0.4rem;
+  border: none;
+  background-color: white;
+  padding: 0.3rem;
+  width: 2rem;
+}
+
+.view-button:hover {
+  border-radius: 8px;
+  box-shadow: 0 0 6px lightslategray;
+  cursor: pointer;
+}

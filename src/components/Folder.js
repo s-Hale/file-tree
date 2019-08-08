@@ -1,5 +1,6 @@
 import React from "react";
 import File from "./File";
+import FolderToggle from "./FolderToggle";
 
 class Folder extends React.Component {
   render() {
@@ -11,7 +12,7 @@ class Folder extends React.Component {
             {each.type === "folder" ? (
               <div className="wrapper-top-level">
                 <span>{each.name}</span>
-                <Folder data={each.files} />
+                <FolderToggle data={each.files} />
               </div>
             ) : (
               <File data={each} />
