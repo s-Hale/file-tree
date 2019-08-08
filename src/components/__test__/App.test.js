@@ -5,6 +5,7 @@ import App from "../../App";
 import File from "../File";
 import Folder from "../Folder";
 import FolderToggle from "../FolderToggle";
+import FilterBar from "../FilterBar";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -22,6 +23,8 @@ describe("App", () => {
     expect(wrapper.find("Folder").exists()).toEqual(true);
   });
 });
+
+// describe Folder check nestedness
 
 describe("FolderToggle", () => {
   let props;
@@ -50,5 +53,12 @@ describe("FolderToggle", () => {
     wrapper.find("button").simulate("click");
     expect(wrapper.find("FolderToggle").state().isVisible).toEqual(true);
     expect(wrapper.find("File").exists()).toEqual(true);
+  });
+});
+
+describe("FilterBar", () => {
+  it("renders correctly", () => {
+    const wrapper = mount(<App />);
+    expect(wrapper.find("FilterBar").exists()).toEqual(true);
   });
 });
