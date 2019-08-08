@@ -1,5 +1,5 @@
 import React from "react";
-import Enzyme, { mount } from "enzyme";
+import Enzyme, { mount, shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import App from "../../App";
 import File from "../File";
@@ -59,6 +59,10 @@ describe("FolderToggle", () => {
 describe("FilterBar", () => {
   it("renders correctly", () => {
     const wrapper = mount(<App />);
+    expect(wrapper.find("FilterBar").exists()).toEqual(true);
+  });
+  it("calls correct function based on button clicked", () => {
+    const wrapper = shallow(<FilterBar />);
     expect(wrapper.find("FilterBar").exists()).toEqual(true);
   });
 });
