@@ -6,13 +6,41 @@ import FilterBar from "./components/FilterBar";
 
 class App extends React.Component {
   state = {
-    data: originalData
+    updatedData: originalData,
+    originalData: originalData
   };
 
   render() {
-    const sortByName = () => null;
-    const sortByDate = () => null;
-    const sortByType = () => null;
+    const sortByName = () => {
+      let result = this.state.originalData.sort((a, b) => {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+      });
+      this.setState({
+        updatedData: result
+      });
+    };
+
+    const sortByDate = () => {
+      let result = this.state.originalData.sort(
+        (a, b) => new Date(b.added) - new Date(a.added)
+      );
+      this.setState({
+        updatedData: result
+      });
+    };
+
+    const sortByType = () => {
+      let result = this.state.originalData.sort((a, b) => {
+        if (a.type !== "folder") return 1;
+        else return -1;
+      });
+      this.setState({
+        updatedData: result
+      });
+    };
+
     const handleTypeSearch = () => null;
 
     return (
@@ -23,7 +51,7 @@ class App extends React.Component {
           sortByDate={sortByDate}
           handleTypeSearch={handleTypeSearch}
         />
-        <Folder data={this.state.data} />
+        <Folder data={this.state.updatedData} />
       </div>
     );
   }
