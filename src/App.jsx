@@ -10,9 +10,19 @@ class App extends React.Component {
   };
 
   render() {
+    const sortByName = () => null;
+    const sortByDate = () => null;
+    const sortByType = () => null;
+    const handleTypeSearch = () => null;
+
     return (
       <div className="wrapper-app">
-        <FilterBar />
+        <FilterBar
+          sortByName={sortByName}
+          sortByType={sortByType}
+          sortByDate={sortByDate}
+          handleTypeSearch={handleTypeSearch}
+        />
         <Folder data={this.state.data} />
       </div>
     );

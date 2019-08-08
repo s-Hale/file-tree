@@ -62,7 +62,21 @@ describe("FilterBar", () => {
     expect(wrapper.find("FilterBar").exists()).toEqual(true);
   });
   it("calls correct function based on button clicked", () => {
-    const wrapper = shallow(<FilterBar />);
-    expect(wrapper.find("FilterBar").exists()).toEqual(true);
+    const sortByName = jest.fn();
+    const sortByType = jest.fn();
+    const sortByDate = jest.fn();
+    const wrapper = shallow(
+      <FilterBar
+        sortByName={sortByName}
+        sortByType={sortByType}
+        sortByDate={sortByDate}
+      />
+    );
+    wrapper.find(".name-button").simulate("click");
+    expect(sortByName).toHaveBeenCalled();
+    wrapper.find(".type-button").simulate("click");
+    expect(sortByType).toHaveBeenCalled();
+    wrapper.find(".date-button").simulate("click");
+    expect(sortByDate).toHaveBeenCalled();
   });
 });
